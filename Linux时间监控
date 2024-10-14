@@ -1,0 +1,25 @@
+使用 auditd 监控系统时间的修改
+你可以使用 auditd 来监控并记录系统调用，包括修改时间的系统调用。首先需要确保 auditd 已安装并运行：
+
+安装 auditd：
+
+bash
+复制代码
+sudo apt-get install auditd
+sudo systemctl start auditd
+添加监控时间修改的规则：
+
+你可以为 stime, settimeofday, clock_settime 这些系统调用添加监控规则，它们通常用于修改系统时间。
+
+bash
+复制代码
+sudo auditctl -a always,exit -F arch=b64 -S adjtimex -S settimeofday -S clock_settime -k time-change
+sudo auditctl -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S clock_settime -k time-change
+检查修改日志：
+
+当系统时间被修改时，你可以通过以下命令查看详细的日志记录：
+
+bash
+复制代码
+ausearch -k time-change
+这会列出任何试图修改系统时间的进程以及相关的信息。

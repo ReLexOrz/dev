@@ -1,0 +1,19 @@
+cd到/usr/local/下
+
+解压缩
+
+tar -zxf go1.19.3.linux-amd64.tar.gz
+
+编辑配置
+vim /etc/profile
+
+
+增加配置文件
+#golang env config
+
+export GOROOT=/usr/local/go 
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+
+设置go代理
+go env -w GOPROXY=https://goproxy.cn,direct

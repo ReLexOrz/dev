@@ -1,0 +1,11 @@
+echo 更新服务端分支
+cd /home/www/pre/go_service/all_games/dockerbase
+git fetch origin
+git reset --hard origin/
+
+echo 更新表格分支
+
+
+echo 导出表格json至服务端
+cd /home/www/pre/go_service/all_games/dockerbase/excel2go/excelToJson
+./excel2go -in ../../merge_happy_excel/word/excel/ -out ../../socketserver/game/gamedata/ -sp shop

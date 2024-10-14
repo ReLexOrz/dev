@@ -1,0 +1,13 @@
+0. yum安装
+
+伴随系统启动： 
+sudo systemctl enable redis
+启动/重启：
+sudo systemctl restart redis
+
+1.配置文件路径
+/etc/redis.conf
+
+2.设置密码
+
+yum暗转

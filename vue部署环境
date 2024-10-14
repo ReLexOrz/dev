@@ -1,0 +1,21 @@
+生成项目
+
+cd frontend
+npm install -g @vue/cli
+vue create .
+
+
+配置端口
+
+frontend/vue.config.js
+
+module.exports = {
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:7072',
+                changeOrigin: true
+            }
+        }
+    }
+}

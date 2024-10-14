@@ -1,0 +1,32 @@
+配置文件位置：
+
+ /usr/local/nginx/conf/nginx.d
+
+ go开发域名：
+dev-happy-socket01.qzzgame.com
+dev-happy-socket02.qzzgame.com
+dev-happy-socket03.qzzgame.com
+dev-happy-socket04.qzzgame.com
+dev-happy-socket05.qzzgame.com
+
+go测试域名：
+test-happy-socket01.qzzgame.com
+
+go预发布域名：
+pre-happy-socket01.qzzgame.com
+
+
+php 测试域名 - 对应go开发和测试环境：
+test-happy.qzzgame.com
+
+php 预发布域名 - 对应go预发布环境：
+pre-happy.qzzgame.com
+
+php 正式环境域名
+happy.qzzgame.com
+
+
+我们自己的打点平台：
+测试域名：test-dataapi.quzzgames.com
+预发布域名：pre-dataapi.quzzgames.com
+正式域名：dataapi.quzzgames.com

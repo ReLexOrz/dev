@@ -1,0 +1,5 @@
+下载文件：
+https://gohappy-socket00.qzzgame.com/debug/debug/pprof/profile
+
+查看分析：
+go tool pprof -http localhost:8081 profile

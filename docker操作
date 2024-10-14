@@ -1,0 +1,82 @@
+镜像
+
+docker images
+docker rmi def456
+
+容器
+
+docker ps -a
+docker stop abc123
+docker rm abc123
+
+
+据一份Dockerfile制作一个镜像
+docker build -f Dockerfile.base -t server_dev_base_image .
+
+据一个镜像 启动一个容器
+docker run -d --name test1 server_dev_base_image
+
+进入容器看看状况
+docker exec -it test1 bash
+
+全弄掉
+docker stop test1
+docker rm test1
+docker rmi server_dev_base_image
+
+
+
+#备份
+
+
+# 使用官方的 Golang 镜像作为基础镜像
+FROM golang:1.19
+
+# 设置工作目录
+WORKDIR /app
+
+# 将本地的 socketserver 文件夹复制到镜像的 /app 目录中
+COPY ./socketserver /app/socketserver
+
+# 运行容器时的默认命令
+RUN go env -w GOPROXY=https://goproxy.cn,direct
+
+
+# 编译后留下编译的基础文件
+RUN cd /app/socketserver \
+    && make \
+    && cd /app \
+    && rm -rf /app/socketserver
+
+CMD ["tail","-f","/dev/null"]
+
+
+
+
+根据baseimage形成新的image
+docker build -f Dockerfile.dev -t server_dev_image .
+
+运行新的容器
+docker run -d --name sdc_8071 server_dev_image
+
+进入容器看看状况
+docker exec -it sdc_8071 bash
+
+
+
+基础启动动作
+CMD ["/app/socketserver/_output/makesweet","-c","/app/socketserver/server/happy/pre_8085.yaml"]
+
+
+服务端启动用的文件
+docker exec -t sdc_$SERVER_ID sh -c '/app/socketserver/_output/makesweet -c /app/socketserver/server/happy/pre_8085.yaml > /app/socketserver/record.log'
+docker exec -t sdc_$SERVER_ID nohup python3 /app/socketserver/statWsServer_pre.py &
+
+
+
+
+
+
+
+//修改在线参数
+140.143.197.228:7071/synconlineinfo?config_gid=1000000&env=test&config_id=112&target_config_gid=10000001&target_env=test

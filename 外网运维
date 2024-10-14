@@ -1,0 +1,37 @@
+外网切换正式分支
+
+rm -rf .git
+
+git init
+
+git remote add origin http://git.babiapp.com/lixiang/socketserver.git
+
+git fetch origin
+
+lixiang
+lxgit&qzz
+
+git reset --hard origin/master
+
+git branch --set-upstream-to=origin/master
+
+
+
+安装java
+sudo yum install java-17-openjdk-devel
+
+选择版本
+alternatives --config java
+
+
+
+
+//快速启动
+
+source fast.sh
+
+nohup python3 statWsServer.py &
+
+
+
+Thu Jul 11 2024 19:47:40 GMT+0800
