@@ -4,7 +4,11 @@ rm -rf .git
 
 git init
 
+新：
 git remote add origin http://git.babiapp.com/lixiang/socketserver.git
+旧：
+git remote add origin http://git.babiapp.com/liutong/make_sweet.git
+
 
 git fetch origin
 
